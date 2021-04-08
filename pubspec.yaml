@@ -30,6 +30,9 @@ dependencies:
   cupertino_icons: ^1.0.1
   get_test: ^3.13.3
   get_storage: ^1.4.0
+  flutter_neumorphic: ^3.0.4+1
+  flutter_icons:
+  cached_network_image:
 
 dev_dependencies:
   flutter_test:
