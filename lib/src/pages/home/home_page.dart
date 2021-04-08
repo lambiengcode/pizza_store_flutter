@@ -14,12 +14,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<String> categories = [
-    'Popular',
-    'Electric',
-    'Fashion',
-    'Food',
-    'Phone',
-    'Shoe',
+    'Seafood',
+    'Cheese',
+    'Beep',
+    'Sausage',
+    'Chicken',
   ];
 
   @override
@@ -93,13 +92,56 @@ class _HomePageState extends State<HomePage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        _buildActionTopbar('Back', Feather.arrow_left),
+        _buildStoreInfo(),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             _buildActionTopbar('Search', Feather.search),
-            SizedBox(width: 16.0),
-            _buildActionTopbar('Cart', Feather.shopping_cart),
+            SizedBox(width: 15.0),
+            _buildActionTopbar('Cart', Feather.map_pin),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildStoreInfo() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Container(
+          height: width * .125,
+          width: width * .125,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            image: DecorationImage(
+              image: AssetImage('images/logo_app.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        SizedBox(width: 12.0),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Pizza Hut',
+              style: TextStyle(
+                color: colorPrimary,
+                fontSize: width / 16.0,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Caveat',
+              ),
+            ),
+            Text(
+              'Now You’re Eating!',
+              style: TextStyle(
+                color: colorDarkGrey,
+                fontSize: width / 28.0,
+                fontWeight: FontWeight.w400,
+                fontFamily: 'Lato',
+              ),
+            ),
           ],
         ),
       ],
@@ -112,14 +154,14 @@ class _HomePageState extends State<HomePage> {
       style: NeumorphicStyle(
         shape: NeumorphicShape.concave,
         boxShape: NeumorphicBoxShape.circle(),
-        depth: 6.0,
-        intensity: .75,
+        depth: 4.0,
+        intensity: .65,
         color: title == 'Back' ? colorBlack : mC,
       ),
       padding: EdgeInsets.all(width / 25.0),
       child: Icon(
         icon,
-        color: title == 'Back' ? mC : colorBlack,
+        color: title == 'Back' ? mC : colorDarkGrey,
         size: width / 18.0,
       ),
       duration: Duration(milliseconds: 200),
@@ -134,37 +176,75 @@ class _HomePageState extends State<HomePage> {
         scrollDirection: Axis.horizontal,
         itemCount: categories.length,
         itemBuilder: (context, index) {
-          return NeumorphicButton(
-            onPressed: () => null,
-            style: NeumorphicStyle(
-              shape: NeumorphicShape.concave,
-              boxShape: NeumorphicBoxShape.roundRect(
-                BorderRadius.circular(8.0),
-              ),
-              depth: 4.0,
-              intensity: .65,
-              color: mC,
-            ),
-            margin: EdgeInsets.only(right: 12.0, bottom: 16.0),
-            padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  categories[index],
-                  style: TextStyle(
-                    color: colorDarkGrey,
-                    fontFamily: 'Lato',
-                    fontSize: width / 30.0,
-                  ),
-                ),
-              ],
-            ),
-            duration: Duration(milliseconds: 200),
-          );
+          return index == 0
+              ? _buildActionActive(context, index)
+              : _buildActionInactive(context, index);
         },
       ),
+    );
+  }
+
+  Widget _buildActionActive(context, index) {
+    return NeumorphicButton(
+      onPressed: () => null,
+      style: NeumorphicStyle(
+        shape: NeumorphicShape.concave,
+        boxShape: NeumorphicBoxShape.roundRect(
+          BorderRadius.circular(8.0),
+        ),
+        depth: 4.0,
+        intensity: .65,
+        color: colorPrimary,
+      ),
+      margin: EdgeInsets.only(right: 12.0, bottom: 16.0),
+      padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            categories[index],
+            style: TextStyle(
+              color: mC,
+              fontFamily: 'Lato',
+              fontSize: width / 30.0,
+            ),
+          ),
+        ],
+      ),
+      duration: Duration(milliseconds: 200),
+    );
+  }
+
+  Widget _buildActionInactive(context, index) {
+    return NeumorphicButton(
+      onPressed: () => null,
+      style: NeumorphicStyle(
+        shape: NeumorphicShape.concave,
+        boxShape: NeumorphicBoxShape.roundRect(
+          BorderRadius.circular(8.0),
+        ),
+        depth: 4.0,
+        intensity: .65,
+        color: mC,
+      ),
+      margin: EdgeInsets.only(right: 12.0, bottom: 16.0),
+      padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            categories[index],
+            style: TextStyle(
+              color: colorDarkGrey,
+              fontFamily: 'Lato',
+              fontSize: width / 30.0,
+            ),
+          ),
+        ],
+      ),
+      duration: Duration(milliseconds: 200),
     );
   }
 
@@ -182,12 +262,12 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         Text(
-          'viewall'.trArgs(),
+          'View All',
           style: TextStyle(
             color: colorPrimary,
             fontFamily: 'Lato',
-            fontWeight: FontWeight.w400,
-            fontSize: width / 26.0,
+            fontWeight: FontWeight.w500,
+            fontSize: width / 28.0,
           ),
         ),
       ],
