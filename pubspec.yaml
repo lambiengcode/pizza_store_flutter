@@ -33,6 +33,7 @@ dependencies:
   flutter_neumorphic: ^3.0.4+1
   flutter_icons:
   cached_network_image:
+  ionicons: ^0.1.1
 
 dev_dependencies:
   flutter_test:

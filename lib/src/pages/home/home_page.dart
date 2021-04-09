@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_pizza_store/src/pages/home/widgets/horizontal_store_card.dart';
 import 'package:flutter_pizza_store/src/public/constant.dart';
 import 'package:flutter_pizza_store/src/public/styles.dart';
-import 'package:get/get.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -22,26 +20,6 @@ class _HomePageState extends State<HomePage> {
   ];
 
   @override
-  void initState() {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarBrightness: Brightness.light,
-      statusBarIconBrightness: Brightness.light,
-    ));
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarBrightness: Brightness.dark,
-      statusBarIconBrightness: Brightness.dark,
-    ));
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -53,30 +31,12 @@ class _HomePageState extends State<HomePage> {
           children: [
             SizedBox(height: height / 20.0),
             _buildTopbar(),
-            SizedBox(height: 24.0),
-            _buildListCategories(),
             SizedBox(height: 6.0),
             Expanded(
               child: SingleChildScrollView(
                 physics: ClampingScrollPhysics(),
                 child: Column(
                   children: [
-                    SizedBox(height: 12.0),
-                    _buildTitle('Popular Sale'),
-                    SizedBox(height: 12.0),
-                    _buildPopularStore(context),
-                    SizedBox(height: 12.0),
-                    _buildTitle('Recommanded for you'),
-                    SizedBox(height: 12.0),
-                    _buildPopularStore(context),
-                    SizedBox(height: 12.0),
-                    _buildTitle('Top Collection'),
-                    SizedBox(height: 12.0),
-                    _buildPopularStore(context),
-                    SizedBox(height: 12.0),
-                    _buildTitle('Upcomming'),
-                    SizedBox(height: 12.0),
-                    _buildPopularStore(context),
                     SizedBox(height: 24.0),
                   ],
                 ),
@@ -92,15 +52,9 @@ class _HomePageState extends State<HomePage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        _buildActionTopbar('Search', Feather.align_left),
         _buildStoreInfo(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            _buildActionTopbar('Search', Feather.search),
-            SizedBox(width: 15.0),
-            _buildActionTopbar('Cart', Feather.map_pin),
-          ],
-        ),
+        _buildActionTopbar('Cart', Feather.map_pin),
       ],
     );
   }
@@ -109,40 +63,14 @@ class _HomePageState extends State<HomePage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Container(
-          height: width * .125,
-          width: width * .125,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            image: DecorationImage(
-              image: AssetImage('images/logo_app.png'),
-              fit: BoxFit.cover,
-            ),
+        Text(
+          'Pizza Hut',
+          style: TextStyle(
+            color: colorPrimary,
+            fontSize: width / 13.5,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Caveat',
           ),
-        ),
-        SizedBox(width: 12.0),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Pizza Hut',
-              style: TextStyle(
-                color: colorPrimary,
-                fontSize: width / 16.0,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Caveat',
-              ),
-            ),
-            Text(
-              'Now You’re Eating!',
-              style: TextStyle(
-                color: colorDarkGrey,
-                fontSize: width / 28.0,
-                fontWeight: FontWeight.w400,
-                fontFamily: 'Lato',
-              ),
-            ),
-          ],
         ),
       ],
     );
@@ -153,15 +81,17 @@ class _HomePageState extends State<HomePage> {
       onPressed: () => null,
       style: NeumorphicStyle(
         shape: NeumorphicShape.concave,
-        boxShape: NeumorphicBoxShape.circle(),
-        depth: 4.0,
-        intensity: .65,
-        color: title == 'Back' ? colorBlack : mC,
+        boxShape: NeumorphicBoxShape.roundRect(
+          BorderRadius.circular(16.0),
+        ),
+        depth: 1.0,
+        intensity: .5,
+        color: mC,
       ),
-      padding: EdgeInsets.all(width / 25.0),
+      padding: EdgeInsets.all(width / 28.0),
       child: Icon(
         icon,
-        color: title == 'Back' ? mC : colorDarkGrey,
+        color: colorPrimary,
         size: width / 18.0,
       ),
       duration: Duration(milliseconds: 200),

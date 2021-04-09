@@ -1,8 +1,7 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_pizza_store/src/pages/home/home_page.dart';
+import 'package:flutter_pizza_store/src/pages/navigation/navigation.dart';
 
 class App extends StatefulWidget {
   @override
@@ -29,6 +28,6 @@ class _AppState extends State<App> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return HomePage();
+    return Navigation();
   }
 }
