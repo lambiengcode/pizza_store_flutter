@@ -29,19 +29,29 @@ class _HomePageState extends State<HomePage> {
         padding: EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
           children: [
-            SizedBox(height: height / 20.0),
+            SizedBox(height: height / 18.0),
             _buildTopbar(),
-            SizedBox(height: 6.0),
-            Expanded(
-              child: SingleChildScrollView(
-                physics: ClampingScrollPhysics(),
-                child: Column(
-                  children: [
-                    SizedBox(height: 24.0),
-                  ],
+            SizedBox(height: 22.0),
+            Container(
+              height: height * .16,
+              margin: EdgeInsets.symmetric(horizontal: 2.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16.0),
+                image: DecorationImage(
+                  image: NetworkImage(
+                      'https://pizzahut.vn/PizzaHutApi/images/My_Box_129k.jpg'),
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
+            SizedBox(height: 32.0),
+            _buildTitle('Categories'),
+            SizedBox(height: 20.0),
+            _buildListCategories(),
+            SizedBox(height: 32.0),
+            _buildTitle('Popular Now'),
+            SizedBox(height: 20.0),
+            _buildPopularList(),
           ],
         ),
       ),
@@ -67,7 +77,7 @@ class _HomePageState extends State<HomePage> {
           'Pizza Hut',
           style: TextStyle(
             color: colorPrimary,
-            fontSize: width / 13.5,
+            fontSize: width / 13.25,
             fontWeight: FontWeight.bold,
             fontFamily: 'Caveat',
           ),
@@ -85,7 +95,7 @@ class _HomePageState extends State<HomePage> {
           BorderRadius.circular(16.0),
         ),
         depth: 1.0,
-        intensity: .5,
+        intensity: .4,
         color: mC,
       ),
       padding: EdgeInsets.all(width / 28.0),
@@ -100,7 +110,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildListCategories() {
     return Container(
-      height: width * .135,
+      height: width * .14,
       width: width,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
@@ -120,14 +130,14 @@ class _HomePageState extends State<HomePage> {
       style: NeumorphicStyle(
         shape: NeumorphicShape.concave,
         boxShape: NeumorphicBoxShape.roundRect(
-          BorderRadius.circular(8.0),
+          BorderRadius.circular(30.0),
         ),
         depth: 4.0,
         intensity: .65,
         color: colorPrimary,
       ),
-      margin: EdgeInsets.only(right: 12.0, bottom: 16.0),
-      padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+      margin: EdgeInsets.only(right: 12.0, bottom: 12.0),
+      padding: EdgeInsets.symmetric(horizontal: 32.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -138,6 +148,7 @@ class _HomePageState extends State<HomePage> {
               color: mC,
               fontFamily: 'Lato',
               fontSize: width / 30.0,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ],
@@ -152,14 +163,14 @@ class _HomePageState extends State<HomePage> {
       style: NeumorphicStyle(
         shape: NeumorphicShape.concave,
         boxShape: NeumorphicBoxShape.roundRect(
-          BorderRadius.circular(8.0),
+          BorderRadius.circular(30.0),
         ),
         depth: 4.0,
         intensity: .65,
         color: mC,
       ),
-      margin: EdgeInsets.only(right: 12.0, bottom: 16.0),
-      padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+      margin: EdgeInsets.only(right: 12.0, bottom: 12.0),
+      padding: EdgeInsets.symmetric(horizontal: 32.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -170,6 +181,7 @@ class _HomePageState extends State<HomePage> {
               color: colorDarkGrey,
               fontFamily: 'Lato',
               fontSize: width / 30.0,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ],
@@ -179,43 +191,43 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildTitle(title) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          title,
-          style: TextStyle(
-            color: colorTitle,
-            fontFamily: 'Lato',
-            fontWeight: FontWeight.w600,
-            fontSize: width / 22.5,
+    return Padding(
+      padding: EdgeInsets.only(left: 6.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            title,
+            style: TextStyle(
+              color: colorTitle,
+              fontFamily: 'Lato',
+              fontWeight: FontWeight.bold,
+              fontSize: width / 20.5,
+            ),
           ),
-        ),
-        Text(
-          'View All',
-          style: TextStyle(
-            color: colorPrimary,
-            fontFamily: 'Lato',
-            fontWeight: FontWeight.w500,
-            fontSize: width / 28.0,
-          ),
-        ),
-      ],
+          title == 'Categories'
+              ? Container()
+              : Text(
+                  'View All',
+                  style: TextStyle(
+                    color: Colors.amber[600],
+                    fontFamily: 'Lato',
+                    fontWeight: FontWeight.w500,
+                    fontSize: width / 26.0,
+                  ),
+                ),
+        ],
+      ),
     );
   }
 
-  Widget _buildPopularStore(context) {
-    final _size = MediaQuery.of(context).size;
-    return Container(
-      height: _size.width * .42,
+  Widget _buildPopularList() {
+    return Expanded(
       child: ListView.builder(
-        padding: EdgeInsets.only(right: 12.0),
         scrollDirection: Axis.horizontal,
         itemCount: 10,
         itemBuilder: (context, index) {
-          return GestureDetector(
-            child: HorizontalStoreCard(),
-          );
+          return HorizontalStoreCard();
         },
       ),
     );

@@ -25,13 +25,13 @@ class _NavigationState extends State<Navigation> {
         height: 70.0,
         width: 70.0,
         child: FloatingActionButton(
-          elevation: .85,
+          elevation: 1.5,
           backgroundColor: colorPrimary,
           onPressed: () => null,
           child: Icon(
             FI.Feather.search,
             color: mCL,
-            size: width / 14.0,
+            size: width / 15.0,
           ),
         ),
       ),
@@ -42,7 +42,7 @@ class _NavigationState extends State<Navigation> {
         clipBehavior: Clip.antiAliasWithSaveLayer,
         shape: CircularNotchedRectangle(),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8.0),
+          padding: EdgeInsets.fromLTRB(8.0, 8.0, 8.0, .0),
           child: Row(
             children: [
               Expanded(

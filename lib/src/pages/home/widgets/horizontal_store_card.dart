@@ -1,9 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:flutter_pizza_store/src/public/constant.dart';
 import 'package:flutter_pizza_store/src/public/styles.dart';
-import 'package:flutter_pizza_store/src/widgets/error_loading_image.dart';
-import 'package:flutter_pizza_store/src/widgets/place_holder_image.dart';
-import 'package:get/get.dart';
 
 class HorizontalStoreCard extends StatefulWidget {
   @override
@@ -13,143 +11,77 @@ class HorizontalStoreCard extends StatefulWidget {
 class _HorizontalStoreCardState extends State<HorizontalStoreCard> {
   @override
   Widget build(BuildContext context) {
-    final _size = MediaQuery.of(context).size;
-    return Container(
-      width: _size.width * .38,
-      margin: EdgeInsets.only(right: 6.0),
-      child: Stack(
+    return NeumorphicButton(
+      onPressed: () => null,
+      style: NeumorphicStyle(
+        shape: NeumorphicShape.concave,
+        boxShape: NeumorphicBoxShape.roundRect(
+          BorderRadius.circular(24.0),
+        ),
+        depth: 4.0,
+        intensity: .75,
+        color: mC,
+      ),
+      margin: EdgeInsets.only(right: 16.0, bottom: 48.0),
+      padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
+      child: Column(
         children: [
+          SizedBox(height: 4.0),
           Container(
-            width: _size.width * .36,
-            height: _size.width * .412,
-            margin: EdgeInsets.only(left: _size.width * .01),
-            padding: EdgeInsets.only(left: 6.5, right: 4.5),
+            height: width / 3.0,
+            width: width / 3.0,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16.0),
-              color: mC,
-              boxShadow: [
-                BoxShadow(
-                  color: mCD,
-                  offset: Offset(5, 5),
-                  blurRadius: 5,
-                ),
-                BoxShadow(
-                  color: mCL,
-                  offset: Offset(-5, -5),
-                  blurRadius: 5,
-                ),
-              ],
-            ),
-            child: Column(
-              children: [
-                SizedBox(height: _size.width * .26 + 6.5),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Highlands Coffee',
-                      style: TextStyle(
-                        color: colorTitle,
-                        fontSize: _size.width / 38.0,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Icon(
-                          Icons.star_rate,
-                          color: Colors.amber.shade600,
-                          size: _size.width / 38.0,
-                        ),
-                        SizedBox(
-                          width: 4.0,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 4.0),
-                          child: Text(
-                            '4.9',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: _size.width / 38.0,
-                              fontWeight: FontWeight.w300,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(height: 2.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      '30 ${'min'.trArgs()}',
-                      style: TextStyle(
-                          color: Colors.green,
-                          fontSize: _size.width / 40.0,
-                          fontWeight: FontWeight.w600),
-                    ),
-                    SizedBox(width: 8.0),
-                    Text(
-                      '${'opens'.trArgs()} 9 am',
-                      style: TextStyle(
-                        color: Colors.grey.shade600,
-                        fontSize: _size.width / 40.0,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 4.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Coffee',
-                      style: TextStyle(
-                        color: Colors.grey.shade600,
-                        fontSize: _size.width / 42.0,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    SizedBox(width: 4.0),
-                    Text(
-                      'Fastfood',
-                      style: TextStyle(
-                        color: Colors.grey.shade600,
-                        fontSize: _size.width / 42.0,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    SizedBox(width: 4.0),
-                    Text(
-                      'Breakfast',
-                      style: TextStyle(
-                        color: Colors.grey.shade600,
-                        fontSize: _size.width / 42.0,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+              shape: BoxShape.circle,
+              image: DecorationImage(
+                image: NetworkImage(
+                    'https://thepizzacompany.vn/images/thumbs/000/0002212_sf-cocktail_300.png'),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-          Positioned(
-            top: .0,
-            left: .0,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16.0),
-              child: CachedNetworkImage(
-                  width: _size.width * .38,
-                  height: _size.width * .26,
-                  fit: BoxFit.cover,
-                  placeholder: (context, url) => PlaceHolderImage(),
-                  errorWidget: (context, url, error) => ErrorLoadingImage(),
-                  imageUrl:
-                      "https://www.highlandscoffee.com.vn/vnt_upload/weblink/HCO-7605-FESTIVE-2020-WEB-FB-2000X639_1.png"),
+          SizedBox(height: 16.0),
+          Text(
+            'Beef Burger',
+            style: TextStyle(
+              color: colorTitle,
+              fontFamily: 'Lato',
+              fontSize: width / 22.5,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          SizedBox(height: 8.0),
+          Text(
+            'Cheesy Mozarella',
+            style: TextStyle(
+              color: colorTitle,
+              fontFamily: 'Lato',
+              fontSize: width / 26.0,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+          SizedBox(height: 16.0),
+          RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: '\$\t',
+                  style: TextStyle(
+                    color: colorPrimary,
+                    fontFamily: 'Lato',
+                    fontSize: width / 26.0,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                TextSpan(
+                  text: '6.59',
+                  style: TextStyle(
+                    color: colorTitle,
+                    fontFamily: 'Lato',
+                    fontSize: width / 18.0,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
             ),
           ),
         ],
