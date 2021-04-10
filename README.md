@@ -16,5 +16,5 @@ flutter run
 ### Screenshots
 
 <p> 
-<img src="https://github.com/hongvinhmobile/flutter_pizza_store/blob/master/screenshots/home.png?raw=true" width="200px"/>
+<img src="https://github.com/hongvinhmobile/flutter_pizza_store/blob/master/screenshots/home_page.png?raw=true" width="200px"/>
 </p>
