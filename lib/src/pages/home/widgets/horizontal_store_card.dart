@@ -18,28 +18,28 @@ class _HorizontalStoreCardState extends State<HorizontalStoreCard> {
         boxShape: NeumorphicBoxShape.roundRect(
           BorderRadius.circular(24.0),
         ),
-        depth: 4.0,
-        intensity: .75,
+        depth: 3.0,
+        intensity: .4,
         color: mC,
       ),
       margin: EdgeInsets.only(right: 16.0, bottom: 48.0),
-      padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
+      padding: EdgeInsets.symmetric(horizontal: 36.0, vertical: 16.0),
       child: Column(
         children: [
-          SizedBox(height: 4.0),
           Container(
-            height: width / 3.0,
-            width: width / 3.0,
+            height: width / 2.8,
+            width: width / 2.8,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
                 image: NetworkImage(
-                    'https://thepizzacompany.vn/images/thumbs/000/0002212_sf-cocktail_300.png'),
+                  'https://freepngimg.com/thumb/burger/5-2-burger-png-thumb.png',
+                ),
                 fit: BoxFit.cover,
               ),
             ),
           ),
-          SizedBox(height: 16.0),
+          SizedBox(height: 4.0),
           Text(
             'Beef Burger',
             style: TextStyle(
@@ -49,9 +49,9 @@ class _HorizontalStoreCardState extends State<HorizontalStoreCard> {
               fontWeight: FontWeight.w600,
             ),
           ),
-          SizedBox(height: 8.0),
+          SizedBox(height: 6.0),
           Text(
-            'Cheesy Mozarella',
+            'Cheesy Mozarella 🍔',
             style: TextStyle(
               color: colorTitle,
               fontFamily: 'Lato',
@@ -59,7 +59,7 @@ class _HorizontalStoreCardState extends State<HorizontalStoreCard> {
               fontWeight: FontWeight.w400,
             ),
           ),
-          SizedBox(height: 16.0),
+          SizedBox(height: 12.0),
           RichText(
             text: TextSpan(
               children: [
@@ -73,12 +73,12 @@ class _HorizontalStoreCardState extends State<HorizontalStoreCard> {
                   ),
                 ),
                 TextSpan(
-                  text: '6.59',
+                  text: '6.59\t\t',
                   style: TextStyle(
                     color: colorTitle,
                     fontFamily: 'Lato',
-                    fontSize: width / 18.0,
-                    fontWeight: FontWeight.w600,
+                    fontSize: width / 16.5,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ],

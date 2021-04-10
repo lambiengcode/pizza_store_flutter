@@ -12,11 +12,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<String> categories = [
-    'Seafood',
-    'Cheese',
-    'Beep',
-    'Sausage',
+    'Burger',
+    'Pizza',
     'Chicken',
+    'Potato Chips',
   ];
 
   @override
@@ -26,7 +25,6 @@ class _HomePageState extends State<HomePage> {
         height: height,
         width: width,
         color: mC,
-        padding: EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
           children: [
             SizedBox(height: height / 18.0),
@@ -34,7 +32,7 @@ class _HomePageState extends State<HomePage> {
             SizedBox(height: 22.0),
             Container(
               height: height * .16,
-              margin: EdgeInsets.symmetric(horizontal: 2.0),
+              margin: EdgeInsets.symmetric(horizontal: 16.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16.0),
                 image: DecorationImage(
@@ -46,9 +44,9 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(height: 32.0),
             _buildTitle('Categories'),
-            SizedBox(height: 20.0),
+            SizedBox(height: 24.0),
             _buildListCategories(),
-            SizedBox(height: 32.0),
+            SizedBox(height: 24.0),
             _buildTitle('Popular Now'),
             SizedBox(height: 20.0),
             _buildPopularList(),
@@ -59,13 +57,16 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildTopbar() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        _buildActionTopbar('Search', Feather.align_left),
-        _buildStoreInfo(),
-        _buildActionTopbar('Cart', Feather.map_pin),
-      ],
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          _buildActionTopbar('Search', Feather.align_left),
+          _buildStoreInfo(),
+          _buildActionTopbar('Cart', Feather.map_pin),
+        ],
+      ),
     );
   }
 
@@ -113,6 +114,7 @@ class _HomePageState extends State<HomePage> {
       height: width * .14,
       width: width,
       child: ListView.builder(
+        padding: EdgeInsets.only(left: 20.0, right: 12.0),
         scrollDirection: Axis.horizontal,
         itemCount: categories.length,
         itemBuilder: (context, index) {
@@ -192,7 +194,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildTitle(title) {
     return Padding(
-      padding: EdgeInsets.only(left: 6.0),
+      padding: EdgeInsets.only(left: 22.0, right: 16.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -207,14 +209,24 @@ class _HomePageState extends State<HomePage> {
           ),
           title == 'Categories'
               ? Container()
-              : Text(
-                  'View All',
-                  style: TextStyle(
-                    color: Colors.amber[600],
-                    fontFamily: 'Lato',
-                    fontWeight: FontWeight.w500,
-                    fontSize: width / 26.0,
-                  ),
+              : Row(
+                  children: [
+                    Text(
+                      'View All',
+                      style: TextStyle(
+                        color: Colors.amber[700],
+                        fontFamily: 'Lato',
+                        fontWeight: FontWeight.w500,
+                        fontSize: width / 26.0,
+                      ),
+                    ),
+                    SizedBox(width: 8.0),
+                    Icon(
+                      Feather.plus_square,
+                      color: Colors.amber[700],
+                      size: width / 22.0,
+                    ),
+                  ],
                 ),
         ],
       ),
@@ -224,6 +236,7 @@ class _HomePageState extends State<HomePage> {
   Widget _buildPopularList() {
     return Expanded(
       child: ListView.builder(
+        padding: EdgeInsets.symmetric(horizontal: 18.0),
         scrollDirection: Axis.horizontal,
         itemCount: 10,
         itemBuilder: (context, index) {
