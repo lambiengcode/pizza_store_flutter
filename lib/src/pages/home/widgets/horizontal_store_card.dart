@@ -16,7 +16,7 @@ class _HorizontalStoreCardState extends State<HorizontalStoreCard> {
       style: NeumorphicStyle(
         shape: NeumorphicShape.concave,
         boxShape: NeumorphicBoxShape.roundRect(
-          BorderRadius.circular(24.0),
+          BorderRadius.circular(30.0),
         ),
         depth: 3.0,
         intensity: .4,
