@@ -11,11 +11,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<String> categories = [
-    'Burger',
-    'Pizza',
-    'Chicken',
-    'Potato Chips',
+  List<Map<String, String>> categories = [
+    {'name': 'Burgur', 'image': 'images/burger.png'},
+    {'name': 'Pizza', 'image': 'images/pizza.png'},
+    {'name': 'Chicken', 'image': 'images/fried-chicken.png'},
+    {'name': 'Potato Chips', 'image': 'images/french-fries.png'},
   ];
 
   @override
@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
             _buildTitle('Categories'),
             SizedBox(height: 24.0),
             _buildListCategories(),
-            SizedBox(height: 24.0),
+            SizedBox(height: 18.0),
             _buildTitle('Popular Now'),
             SizedBox(height: 20.0),
             _buildPopularList(),
@@ -111,7 +111,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildListCategories() {
     return Container(
-      height: width * .14,
+      height: width * .145,
       width: width,
       child: ListView.builder(
         padding: EdgeInsets.only(left: 20.0, right: 12.0),
@@ -138,14 +138,26 @@ class _HomePageState extends State<HomePage> {
         intensity: .65,
         color: colorPrimary,
       ),
-      margin: EdgeInsets.only(right: 12.0, bottom: 12.0),
-      padding: EdgeInsets.symmetric(horizontal: 32.0),
+      margin: EdgeInsets.only(right: 12.0, bottom: 6.0),
+      padding: EdgeInsets.only(left: 28.0, right: 32.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Container(
+            height: width / 13.5,
+            width: width / 13.5,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              image: DecorationImage(
+                image: AssetImage(categories[index]['image']),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          SizedBox(width: 8.0),
           Text(
-            categories[index],
+            categories[index]['name'],
             style: TextStyle(
               color: mC,
               fontFamily: 'Lato',
@@ -171,14 +183,26 @@ class _HomePageState extends State<HomePage> {
         intensity: .65,
         color: mC,
       ),
-      margin: EdgeInsets.only(right: 12.0, bottom: 12.0),
-      padding: EdgeInsets.symmetric(horizontal: 32.0),
+      margin: EdgeInsets.only(right: 12.0, bottom: 6.0),
+      padding: EdgeInsets.only(left: 28.0, right: 32.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Container(
+            height: width / 13.5,
+            width: width / 13.5,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              image: DecorationImage(
+                image: AssetImage(categories[index]['image']),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          SizedBox(width: 8.0),
           Text(
-            categories[index],
+            categories[index]['name'],
             style: TextStyle(
               color: colorDarkGrey,
               fontFamily: 'Lato',
