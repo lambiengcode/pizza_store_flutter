@@ -34,6 +34,7 @@ dependencies:
   flutter_icons:
   cached_network_image:
   ionicons: ^0.1.1
+  flutter_bloc: ^6.0.0
 
 dev_dependencies:
   flutter_test:

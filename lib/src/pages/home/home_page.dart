@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:flutter_pizza_store/src/controllers/product_controller.dart';
 import 'package:flutter_pizza_store/src/pages/home/widgets/horizontal_store_card.dart';
 import 'package:flutter_pizza_store/src/public/constant.dart';
 import 'package:flutter_pizza_store/src/public/styles.dart';
+import 'package:get/get.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -11,12 +13,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final productController = Get.put(ProductController());
   List<Map<String, String>> categories = [
     {'name': 'Burgur', 'image': 'images/burger.png'},
     {'name': 'Pizza', 'image': 'images/pizza.png'},
     {'name': 'Chicken', 'image': 'images/fried-chicken.png'},
     {'name': 'Potato Chips', 'image': 'images/french-fries.png'},
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    productController.filter();
+  }
 
   @override
   Widget build(BuildContext context) {
