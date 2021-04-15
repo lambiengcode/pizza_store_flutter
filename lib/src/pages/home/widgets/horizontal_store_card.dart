@@ -4,6 +4,11 @@ import 'package:flutter_pizza_store/src/public/constant.dart';
 import 'package:flutter_pizza_store/src/public/styles.dart';
 
 class HorizontalStoreCard extends StatefulWidget {
+  final String name;
+  final String image;
+  final String description;
+  final double price;
+  HorizontalStoreCard({this.name, this.image, this.price, this.description});
   @override
   State<StatefulWidget> createState() => _HorizontalStoreCardState();
 }
@@ -32,16 +37,14 @@ class _HorizontalStoreCardState extends State<HorizontalStoreCard> {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
-                image: NetworkImage(
-                  'https://freepngimg.com/thumb/burger/5-2-burger-png-thumb.png',
-                ),
+                image: NetworkImage(widget.image),
                 fit: BoxFit.cover,
               ),
             ),
           ),
           SizedBox(height: 4.0),
           Text(
-            'Beef Burger',
+            widget.name,
             style: TextStyle(
               color: colorTitle,
               fontFamily: 'Lato',
@@ -51,7 +54,7 @@ class _HorizontalStoreCardState extends State<HorizontalStoreCard> {
           ),
           SizedBox(height: 6.0),
           Text(
-            'Cheesy Mozarella 🍔',
+            widget.description,
             style: TextStyle(
               color: colorTitle,
               fontFamily: 'Lato',
@@ -73,7 +76,7 @@ class _HorizontalStoreCardState extends State<HorizontalStoreCard> {
                   ),
                 ),
                 TextSpan(
-                  text: '6.59\t\t',
+                  text: '${widget.price}\t\t',
                   style: TextStyle(
                     color: colorTitle,
                     fontFamily: 'Lato',

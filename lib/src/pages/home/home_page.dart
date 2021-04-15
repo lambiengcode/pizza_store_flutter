@@ -268,13 +268,20 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildPopularList() {
     return Expanded(
-      child: ListView.builder(
-        padding: EdgeInsets.symmetric(horizontal: 18.0),
-        scrollDirection: Axis.horizontal,
-        itemCount: 10,
-        itemBuilder: (context, index) {
-          return HorizontalStoreCard();
-        },
+      child: GetBuilder<ProductController>(
+        builder: (_) => ListView.builder(
+          padding: EdgeInsets.symmetric(horizontal: 18.0),
+          scrollDirection: Axis.horizontal,
+          itemCount: _.currentProducts.length,
+          itemBuilder: (context, index) {
+            return HorizontalStoreCard(
+              name: _.currentProducts[index].name,
+              image: _.currentProducts[index].image,
+              description: _.currentProducts[index].description,
+              price: _.currentProducts[index].price,
+            );
+          },
+        ),
       ),
     );
   }
