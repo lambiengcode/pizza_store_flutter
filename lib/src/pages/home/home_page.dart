@@ -46,7 +46,8 @@ class _HomePageState extends State<HomePage> {
                 borderRadius: BorderRadius.circular(16.0),
                 image: DecorationImage(
                   image: NetworkImage(
-                      'https://pizzahut.vn/PizzaHutApi/images/My_Box_129k.jpg'),
+                    'https://pizzahut.vn/PizzaHutApi/images/My_Box_129k.jpg',
+                  ),
                   fit: BoxFit.cover,
                 ),
               ),

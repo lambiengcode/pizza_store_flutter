@@ -20,10 +20,10 @@ class ProductController extends GetxController {
   setLocation(currentLocation) {
     location = currentLocation;
     filter();
-    update();
   }
 
   setProductType(currentProductType) {
     productType = currentProductType;
+    update();
   }
 }
