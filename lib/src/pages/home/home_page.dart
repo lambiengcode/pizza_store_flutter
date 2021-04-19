@@ -152,11 +152,10 @@ class _HomePageState extends State<HomePage> {
           scrollDirection: Axis.horizontal,
           itemCount: categories.length,
           itemBuilder: (context, index) {
-            return _.productType
-                        .toString()
-                        .replaceAll('ProductType.', '')
-                        .replaceAll('Potato ', '') ==
-                    categories[index]['name'].toLowerCase()
+            return _.productType.toString().replaceAll('ProductType.', '') ==
+                    categories[index]['name']
+                        .replaceAll('Potato ', '')
+                        .toLowerCase()
                 ? _buildActionActive(context, index)
                 : _buildActionInactive(context, index);
           },
