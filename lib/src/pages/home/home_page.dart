@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_pizza_store/src/controllers/product_controller.dart';
+import 'package:flutter_pizza_store/src/events/product_event.dart';
 import 'package:flutter_pizza_store/src/pages/home/widgets/horizontal_store_card.dart';
 import 'package:flutter_pizza_store/src/public/constant.dart';
 import 'package:flutter_pizza_store/src/public/styles.dart';
@@ -15,7 +16,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final productController = Get.put(ProductController());
   List<Map<String, String>> categories = [
-    {'name': 'Burgur', 'image': 'images/burger.png'},
+    {'name': 'Burger', 'image': 'images/burger.png'},
     {'name': 'Pizza', 'image': 'images/pizza.png'},
     {'name': 'Chicken', 'image': 'images/fried-chicken.png'},
     {'name': 'Potato Chips', 'image': 'images/french-fries.png'},
@@ -123,15 +124,21 @@ class _HomePageState extends State<HomePage> {
     return Container(
       height: width * .145,
       width: width,
-      child: ListView.builder(
-        padding: EdgeInsets.only(left: 20.0, right: 12.0),
-        scrollDirection: Axis.horizontal,
-        itemCount: categories.length,
-        itemBuilder: (context, index) {
-          return index == 0
-              ? _buildActionActive(context, index)
-              : _buildActionInactive(context, index);
-        },
+      child: GetBuilder<ProductController>(
+        builder: (_) => ListView.builder(
+          padding: EdgeInsets.only(left: 20.0, right: 12.0),
+          scrollDirection: Axis.horizontal,
+          itemCount: categories.length,
+          itemBuilder: (context, index) {
+            return _.productType
+                        .toString()
+                        .replaceAll('ProductType.', '')
+                        .replaceAll('Potato ', '') ==
+                    categories[index]['name'].toLowerCase()
+                ? _buildActionActive(context, index)
+                : _buildActionInactive(context, index);
+          },
+        ),
       ),
     );
   }
@@ -183,7 +190,23 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildActionInactive(context, index) {
     return NeumorphicButton(
-      onPressed: () => null,
+      onPressed: () {
+        switch (index) {
+          case 0:
+            productController.setProductType(ProductType.burger);
+            break;
+          case 1:
+            productController.setProductType(ProductType.pizza);
+            break;
+          case 2:
+            productController.setProductType(ProductType.chicken);
+            break;
+          case 3:
+            productController.setProductType(ProductType.chips);
+            break;
+          default:
+        }
+      },
       style: NeumorphicStyle(
         shape: NeumorphicShape.concave,
         boxShape: NeumorphicBoxShape.roundRect(

@@ -11,9 +11,10 @@ class ProductController extends GetxController {
   List<Product> currentProducts = [];
 
   filter() {
-    final products = FoodFactory.getFood(ProductType.burger);
+    final products = FoodFactory.getFood(productType);
     products.initial();
     products.filterByLocation(location);
+    currentProducts.clear();
     currentProducts.addAll(products.products());
     update();
   }
@@ -21,10 +22,12 @@ class ProductController extends GetxController {
   setLocation(currentLocation) {
     location = currentLocation;
     filter();
+    update();
   }
 
   setProductType(currentProductType) {
     productType = currentProductType;
+    filter();
     update();
   }
 }

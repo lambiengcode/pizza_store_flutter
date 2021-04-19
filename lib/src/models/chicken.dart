@@ -10,7 +10,7 @@ class Chicken implements Food {
   @override
   void initial() {
     allProducts.forEach((product) {
-      if (product.type == ProductType.burger) _products.add(product);
+      if (product.type == ProductType.chicken) _products.add(product);
     });
   }
 
