@@ -4,7 +4,7 @@ import 'package:flutter_pizza_store/src/models/food.dart';
 import 'package:flutter_pizza_store/src/models/product.dart';
 import 'package:flutter_pizza_store/src/repository/product_repository.dart';
 
-class Burger implements Food {
+class Chips implements Food {
   List<Product> _products = [];
 
   @override

@@ -12,6 +12,7 @@ class ProductController extends GetxController {
 
   filter() {
     final products = FoodFactory.getFood(ProductType.burger);
+    products.initial();
     products.filterByLocation(location);
     currentProducts.addAll(products.products());
     update();

@@ -4,13 +4,13 @@ import 'package:flutter_pizza_store/src/models/food.dart';
 import 'package:flutter_pizza_store/src/models/product.dart';
 import 'package:flutter_pizza_store/src/repository/product_repository.dart';
 
-class Burger implements Food {
+class Pizza implements Food {
   List<Product> _products = [];
 
   @override
   void initial() {
     allProducts.forEach((product) {
-      if (product.type == ProductType.burger) _products.add(product);
+      if (product.type == ProductType.pizza) _products.add(product);
     });
   }
 
