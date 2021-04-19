@@ -5,7 +5,7 @@ import 'package:flutter_pizza_store/src/models/product.dart';
 import 'package:get/get.dart';
 
 class ProductController extends GetxController {
-  LocationType location = LocationType.honoi;
+  LocationType location = LocationType.hanoi;
   ProductType productType = ProductType.burger;
 
   List<Product> currentProducts = [];

@@ -8,7 +8,7 @@ List<Product> allProducts = [
     image: 'https://freepngimg.com/thumb/burger/5-2-burger-png-thumb.png',
     description: 'Cheesy Mozarella 🍔',
     price: 6.59,
-    location: LocationType.honoi,
+    location: LocationType.hanoi,
     type: ProductType.burger,
   ),
   Product(
@@ -16,7 +16,7 @@ List<Product> allProducts = [
     image: 'https://freepngimg.com/thumb/burger/5-2-burger-png-thumb.png',
     description: 'Cheesy Mozarella 🍔',
     price: 7.59,
-    location: LocationType.saigon,
+    location: LocationType.hochiminh,
     type: ProductType.burger,
   ),
   Product(
@@ -24,7 +24,7 @@ List<Product> allProducts = [
     image: 'https://freepngimg.com/thumb/burger/5-2-burger-png-thumb.png',
     description: 'Cheesy Mozarella 🍔',
     price: 8.59,
-    location: LocationType.saigon,
+    location: LocationType.hochiminh,
     type: ProductType.burger,
   ),
   Product(
@@ -32,7 +32,7 @@ List<Product> allProducts = [
     image: 'https://freepngimg.com/thumb/burger/5-2-burger-png-thumb.png',
     description: 'Cheesy Mozarella 🍔',
     price: 9.59,
-    location: LocationType.honoi,
+    location: LocationType.hanoi,
     type: ProductType.burger,
   ),
   Product(
@@ -40,7 +40,7 @@ List<Product> allProducts = [
     image: 'https://freepngimg.com/thumb/burger/5-2-burger-png-thumb.png',
     description: 'Cheesy Mozarella 🍔',
     price: 6.59,
-    location: LocationType.honoi,
+    location: LocationType.hanoi,
     type: ProductType.pizza,
   ),
   Product(
@@ -48,7 +48,7 @@ List<Product> allProducts = [
     image: 'https://freepngimg.com/thumb/burger/5-2-burger-png-thumb.png',
     description: 'Cheesy Mozarella 🍔',
     price: 7.59,
-    location: LocationType.saigon,
+    location: LocationType.hochiminh,
     type: ProductType.pizza,
   ),
   Product(
@@ -56,7 +56,7 @@ List<Product> allProducts = [
     image: 'https://freepngimg.com/thumb/burger/5-2-burger-png-thumb.png',
     description: 'Cheesy Mozarella 🍔',
     price: 8.59,
-    location: LocationType.saigon,
+    location: LocationType.hochiminh,
     type: ProductType.pizza,
   ),
   Product(
@@ -64,7 +64,7 @@ List<Product> allProducts = [
     image: 'https://freepngimg.com/thumb/burger/5-2-burger-png-thumb.png',
     description: 'Cheesy Mozarella 🍔',
     price: 9.59,
-    location: LocationType.honoi,
+    location: LocationType.hanoi,
     type: ProductType.chicken,
   ),
   Product(
@@ -72,7 +72,7 @@ List<Product> allProducts = [
     image: 'https://freepngimg.com/thumb/burger/5-2-burger-png-thumb.png',
     description: 'Cheesy Mozarella 🍔',
     price: 6.59,
-    location: LocationType.honoi,
+    location: LocationType.hanoi,
     type: ProductType.chicken,
   ),
   Product(
@@ -80,7 +80,7 @@ List<Product> allProducts = [
     image: 'https://freepngimg.com/thumb/burger/5-2-burger-png-thumb.png',
     description: 'Cheesy Mozarella 🍔',
     price: 7.59,
-    location: LocationType.saigon,
+    location: LocationType.hochiminh,
     type: ProductType.chicken,
   ),
   Product(
@@ -88,7 +88,7 @@ List<Product> allProducts = [
     image: 'https://freepngimg.com/thumb/burger/5-2-burger-png-thumb.png',
     description: 'Cheesy Mozarella 🍔',
     price: 8.59,
-    location: LocationType.saigon,
+    location: LocationType.hochiminh,
     type: ProductType.chicken,
   ),
   Product(
@@ -96,7 +96,7 @@ List<Product> allProducts = [
     image: 'https://freepngimg.com/thumb/burger/5-2-burger-png-thumb.png',
     description: 'Cheesy Mozarella 🍔',
     price: 9.59,
-    location: LocationType.honoi,
+    location: LocationType.hanoi,
     type: ProductType.chicken,
   ),
 ];

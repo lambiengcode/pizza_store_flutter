@@ -1,6 +1,5 @@
 enum LocationType {
-  honoi,
+  hanoi,
   danang,
-  saigon,
-  cantho,
+  hochiminh,
 }

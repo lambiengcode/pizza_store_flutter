@@ -3,6 +3,7 @@ import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_pizza_store/src/controllers/product_controller.dart';
 import 'package:flutter_pizza_store/src/events/product_event.dart';
+import 'package:flutter_pizza_store/src/pages/home/widgets/bottom_location.dart';
 import 'package:flutter_pizza_store/src/pages/home/widgets/horizontal_store_card.dart';
 import 'package:flutter_pizza_store/src/public/constant.dart';
 import 'package:flutter_pizza_store/src/public/styles.dart';
@@ -21,6 +22,21 @@ class _HomePageState extends State<HomePage> {
     {'name': 'Chicken', 'image': 'images/fried-chicken.png'},
     {'name': 'Potato Chips', 'image': 'images/french-fries.png'},
   ];
+
+  showLocationBottomSheet() {
+    showModalBottomSheet(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(24.0),
+        ),
+      ),
+      isScrollControlled: true,
+      context: context,
+      builder: (context) {
+        return BottomLocation();
+      },
+    );
+  }
 
   @override
   void initState() {
@@ -75,7 +91,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           _buildActionTopbar('Search', Feather.align_left),
           _buildStoreInfo(),
-          _buildActionTopbar('Cart', Feather.map_pin),
+          _buildActionTopbar('Location', Feather.map_pin),
         ],
       ),
     );
@@ -100,7 +116,13 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildActionTopbar(title, icon) {
     return NeumorphicButton(
-      onPressed: () => null,
+      onPressed: () {
+        switch (title) {
+          case 'Location':
+            showLocationBottomSheet();
+            break;
+        }
+      },
       style: NeumorphicStyle(
         shape: NeumorphicShape.concave,
         boxShape: NeumorphicBoxShape.roundRect(
