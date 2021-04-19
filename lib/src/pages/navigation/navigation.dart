@@ -22,8 +22,8 @@ class _NavigationState extends State<Navigation> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: Container(
-        height: 70.0,
-        width: 70.0,
+        height: 62.5,
+        width: 62.5,
         child: FloatingActionButton(
           elevation: 1.5,
           backgroundColor: colorPrimary,

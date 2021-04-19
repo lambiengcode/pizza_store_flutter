@@ -1,4 +1,4 @@
-import 'package:flutter_pizza_store/src/blocs/product_bloc.dart';
+import 'package:flutter_pizza_store/src/factory/food_factory.dart';
 import 'package:flutter_pizza_store/src/events/location_event.dart';
 import 'package:flutter_pizza_store/src/events/product_event.dart';
 import 'package:flutter_pizza_store/src/models/product.dart';
@@ -11,7 +11,7 @@ class ProductController extends GetxController {
   List<Product> currentProducts = [];
 
   filter() {
-    final products = ProductBloc(ProductType.burger);
+    final products = FoodFactory.getFood(ProductType.burger);
     products.filterByLocation(location);
     currentProducts.addAll(products.products());
     update();

@@ -1,10 +1,9 @@
-import 'package:flutter_pizza_store/src/events/location_event.dart';
 import 'package:flutter_pizza_store/src/events/product_event.dart';
 import 'package:flutter_pizza_store/src/models/burger.dart';
-import 'package:flutter_pizza_store/src/models/product.dart';
+import 'package:flutter_pizza_store/src/models/food.dart';
 
-abstract class ProductBloc {
-  factory ProductBloc(ProductType type) {
+class FoodFactory {
+  static Food getFood(ProductType type) {
     switch (type) {
       case ProductType.burger:
         return Burger();
@@ -17,11 +16,5 @@ abstract class ProductBloc {
       default:
         return Burger();
     }
-  }
-
-  void filterByLocation(LocationType location) {}
-
-  List<Product> products() {
-    return [];
   }
 }
